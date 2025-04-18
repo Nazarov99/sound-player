@@ -27,7 +27,7 @@
 ## ▶️ Запуск локально
 
 ```bash
-git clone https://github.com/your-username/sound-player-angular15.git
-cd sound-player-angular15
+git clone https://github.com/Nazarov99/sound-player.git
+cd sound-player
 npm install
 ng serve
