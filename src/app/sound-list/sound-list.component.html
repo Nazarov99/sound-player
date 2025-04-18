@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-table [dataSource]="sounds" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let sound"> {{sound.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Наименование звука </mat-header-cell>
+      <mat-cell *matCellDef="let sound"> {{sound.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="filename">
+      <mat-header-cell *matHeaderCellDef> Имя файла </mat-header-cell>
+      <mat-cell *matCellDef="let sound"> {{sound.filename}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns;"
+      [class.selected]="isSelected(row)"
+      (click)="onRowClick(row)"
+      style="cursor: pointer;">
+    </mat-row>
+  </mat-table>
+</mat-card>
+
+<div *ngIf="selectedSound" @fadeIn class="player">
+  <h3>Выбран: {{ selectedSound.name }}</h3>
+  <audio controls [src]="selectedSound.url"></audio>
+</div>
